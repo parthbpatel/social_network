@@ -22,6 +22,20 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Rubocop gem to correct linter related issues keeping your code close to standard coding practices
+gem 'rubocop'
+# Devise security gem
+gem 'devise'
+# To handle images
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick'
+# Use omniauth-facebook gem allows Facebook login integration
+gem 'omniauth-facebook'
+# Allows access to twitter's Bootstrap framework
+gem 'bootstrap'
+# Hirb gem organizes the display for active record information into tables when using the rails console… eg. After opening rails console type Hirb.enable to activate it
+gem 'hirb'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -31,6 +45,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # A Ruby gem to load environment variables from `.env` files.
+  gem 'dotenv-rails'
 end
 
 group :development do
