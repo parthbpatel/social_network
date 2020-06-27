@@ -32,9 +32,11 @@ gem 'mini_magick'
 # Use omniauth-facebook gem allows Facebook login integration
 gem 'omniauth-facebook'
 # Allows access to twitter's Bootstrap framework
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.5'
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 # Hirb gem organizes the display for active record information into tables when using the rails console… eg. After opening rails console type Hirb.enable to activate it
 gem 'hirb'
+gem 'pry', '~> 0.13.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
