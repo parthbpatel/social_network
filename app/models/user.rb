@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+  has_many :likes, dependent: :destroy
 
   private
   # Validates the size of an uploaded picture.
