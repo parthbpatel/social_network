@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validate :picture_size
 
   has_many :posts
+  has_many :comments
 
   private
   # Validates the size of an uploaded picture.
