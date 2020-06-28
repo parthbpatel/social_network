@@ -8,6 +8,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook]
   validate :picture_size
 
+  has_many :posts
+
   private
   # Validates the size of an uploaded picture.
   def picture_size
