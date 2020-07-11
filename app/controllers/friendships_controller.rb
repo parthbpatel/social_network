@@ -24,7 +24,7 @@ class FriendshipsController < ApplicationController
   end
 
   def accept_friend
-    @friend = Friendship.find_by(sent_by_id: params[:user_id], sent_to_id: current_user.id, stutus: false)
+    @friend = Friendship.find_by(sent_by_id: params[:user_id], sent_to_id: current_user.id, status: false)
     return unless @friendship # return if no record is found
 
     @friendship.status = true
