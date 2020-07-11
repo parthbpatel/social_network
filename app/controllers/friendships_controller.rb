@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FriendshipsController < ApplicationController
   include ApplicationHelper
 
@@ -14,11 +16,11 @@ class FriendshipsController < ApplicationController
     @user = User.find(params[:user_id])
     @friendship = current_user.friend_sent.build(sent_to_id: params[:user_id])
     if @friendship.save
-      flash[:success] = "Friend Request Sent"
+      flash[:success] = 'Friend Request Sent'
       @notification = new_notification(@user, current_user.id, 'friendRequest')
       @notification.save
     else
-      flash[:danger] = "Friend Request Failed"
+      flash[:danger] = 'Friend Request Failed'
     end
     redirect_back(fallback_location: root_path)
   end
@@ -29,11 +31,11 @@ class FriendshipsController < ApplicationController
 
     @friendship.status = true
     if @friend.save
-      flash[:success] = "Friend Request Accepted"
+      flash[:success] = 'Friend Request Accepted'
       @friendrequest2 = current_user.friend_sent.build(sent_to_id: params[:user_id], status: true)
       @friendrequest2.save
     else
-      flash[:danger] = "Friend Request could not be accepted"
+      flash[:danger] = 'Friend Request could not be accepted'
     end
     redirect_back(fallback_location: root_path)
   end
@@ -45,7 +47,7 @@ class FriendshipsController < ApplicationController
     return unless @friendship # return if no record is found
 
     @friendship.destroy
-    flash[:success] = "Friend Request Declined"
+    flash[:success] = 'Friend Request Declined'
     redirect_back(fallback_location: root_path)
   end
 end
