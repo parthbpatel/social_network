@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   put '/users/:id', to: 'users#update_img'
+  get '/saw_notification', to: 'users#saw_notification', as: 'saw_notice'
 
   resources :posts, only: %i[index new create show destroy] do
     resources :likes, only: %i[create]
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
   resources :comments, only: %i[new create destroy] do
     resources :likes, only: %i[create]
   end
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
