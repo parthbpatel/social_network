@@ -15,7 +15,6 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(posts_params)
-    # @post.save ? redirect_to @post : render 'new'
     if @post.save
       redirect_to @post
     else
@@ -23,7 +22,14 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @post = Post.find(params[:id])
+    return unless current_user.id == @post.user_id
+
+    @post.destroy
+    flash[:success] = 'Post deleted'
+    redirect_back(fallback_location: root_path)
+  end
 
   private
 
