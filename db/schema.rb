@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_122354) do
+ActiveRecord::Schema.define(version: 2020_07_18_120416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_122354) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["sent_by_id"], name: "index_friendships_on_sent_by_id"
+    t.index ["sent_to_id", "sent_by_id"], name: "index_friendships_on_sent_to_id_and_sent_by_id", unique: true
     t.index ["sent_to_id"], name: "index_friendships_on_sent_to_id"
   end
 
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_122354) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "seen", default: false
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_122354) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "imageURL"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -74,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_122354) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "notice_seen", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
