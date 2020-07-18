@@ -13,8 +13,10 @@ class CommentsController < ApplicationController
     if @comment.save
       @notification = new_notification(@post.user, @post.id, 'comment')
       @notification.save
+      redirect_to @post
+    else
+      render 'new'
     end
-    redirect_to @post
   end
 
   def destroy
