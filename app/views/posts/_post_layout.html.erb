@@ -26,11 +26,15 @@
       <div class="center py-4">
         <%= image_tag(object.imageURL, class: "img-fill")%>
       </div>
-
     <%else%>
-        <div class="size-18 text-post mb-2 ml-3">
-          <%= object.content %>
-        </div>
+      <div class="size-18 text-post mb-2 ml-3">
+        <%= object.content %>
+      </div>
+    <% end %>
+    <% if object.photo.present? %>
+      <div class="center py-4">
+        <%= image_tag(object.photo, class: "img-fill")%>
+      </div>
     <% end %>
     <% if current_user.id == object.user_id%>
       <%= link_to post_path(object), method: :delete, data: { confirm: "You sure?" } do %>
