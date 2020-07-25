@@ -37,7 +37,7 @@ class User < ApplicationRecord
       our_posts << p
     end
 
-    our_posts
+    our_posts.sort_by(&:created_at).reverse
   end
 
   private
